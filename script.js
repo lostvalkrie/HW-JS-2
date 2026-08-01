@@ -17,11 +17,24 @@ console.log(checkMultiplicity(15, 3));
 console.log(checkMultiplicity(15, 5));
 console.log(checkMultiplicity(15, 4));
 
+/**
+ * Validates if the given parameter is a valid positive number.
+ * @param {number} param - The value to check.
+ * @param {number} [minVal=0] - The minimum threshold value.
+ * @returns {boolean} True if the parameter is invalid or out of bounds, false otherwise.
+ */
 function isParamNotAble(param, minVal = 0) {
   if (typeof param !== "number" || Number.isNaN(param) || param <= minVal)
     return true;
 }
 
+/**
+ * Calculates the surface area of a 3D shape (cube or cylinder).
+ * @param {string} shapeType - The type of shape ("cube" or "cylinder").
+ * @param {number} param1 - The edge length of the cube or radius of the cylinder.
+ * @param {number} [param2] - The height of the cylinder.
+ * @returns {number} The calculated surface area, or 0 if inputs are invalid.
+ */
 const calculateSurfaceArea = function (shapeType, param1, param2) {
   if (isParamNotAble(param1, 0)) return 0;
 
