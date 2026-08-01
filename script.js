@@ -78,3 +78,17 @@ console.log(calculateSurfaceArea("cube", -5));
 console.log(calculatePaintBoxes(cylinderArea, 3));
 console.log(calculatePaintBoxes(cubeArea));
 console.log(calculatePaintBoxes(0, 3));
+
+const shapeType = "cylinder";
+const layersCount = 3;
+const area = calculateSurfaceArea(shapeType, 3, 5);
+
+const boxes = calculatePaintBoxes(area, layersCount);
+
+if (boxes === 0) {
+  console.log("Неможливо виконати розрахунок через некоректні дані.");
+} else {
+  console.log(
+    `Для фарбування фігури ${shapeType} у ${layersCount} шарів необхідно придбати ${boxes} банок фарби.`,
+  );
+}
