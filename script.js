@@ -17,13 +17,13 @@ console.log(checkMultiplicity(15, 3));
 console.log(checkMultiplicity(15, 5));
 console.log(checkMultiplicity(15, 4));
 
-function isParamNotAble(param) {
-  if (typeof param !== "number" || Number.isNaN(param) || param < 0)
+function isParamNotAble(param, minVal = 0) {
+  if (typeof param !== "number" || Number.isNaN(param) || param <= minVal)
     return true;
 }
 
 const calculateSurfaceArea = function (shapeType, param1, param2) {
-  if (isParamNotAble(param1)) return 0;
+  if (isParamNotAble(param1, 0)) return 0;
 
   if (typeof shapeType !== "string") return 0;
   const shape = shapeType.toLowerCase();
@@ -32,7 +32,7 @@ const calculateSurfaceArea = function (shapeType, param1, param2) {
     case "cube":
       return 6 * param1 ** 2;
     case "cylinder":
-      if (isParamNotAble(param2)) return 0;
+      if (isParamNotAble(param2, 0)) return 0;
       return 2 * Math.PI * param1 * (param1 + param2);
     default:
       return 0;
@@ -46,3 +46,22 @@ console.log(calculateSurfaceArea("cube", -5));
 console.log(calculateSurfaceArea("cylinder", 3));
 console.log(calculateSurfaceArea("sphere", 5));
 console.log(calculateSurfaceArea(123, 5));
+
+const calculatePaintBoxes = function (area, layersCount = 1) {
+  if (isParamNotAble(area, 0) || isParamNotAble(layersCount, 0)) return 0;
+
+  const ONE_BOX_CAN_FILL = 10;
+  const FULL_AREA = area * layersCount;
+
+  return Math.ceil(FULL_AREA / ONE_BOX_CAN_FILL);
+};
+
+let cylinderArea = calculateSurfaceArea("cylinder", 3, 5);
+let cubeArea = calculateSurfaceArea("cube", 5);
+
+console.log(calculateSurfaceArea("cube", 5));
+console.log(calculateSurfaceArea("cylinder", 3, 5));
+console.log(calculateSurfaceArea("cube", -5));
+console.log(calculatePaintBoxes(cylinderArea, 3));
+console.log(calculatePaintBoxes(cubeArea));
+console.log(calculatePaintBoxes(0, 3));
