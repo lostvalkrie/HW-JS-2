@@ -24,8 +24,7 @@ console.log(checkMultiplicity(15, 4));
  * @returns {boolean} True if the parameter is invalid or out of bounds, false otherwise.
  */
 function isParamNotAble(param, minVal = 0) {
-  if (typeof param !== "number" || Number.isNaN(param) || param <= minVal)
-    return true;
+  return typeof param !== "number" || Number.isNaN(param) || param <= minVal;
 }
 
 /**
@@ -36,16 +35,22 @@ function isParamNotAble(param, minVal = 0) {
  * @returns {number} The calculated surface area, or 0 if inputs are invalid.
  */
 const calculateSurfaceArea = function (shapeType, param1, param2) {
-  if (isParamNotAble(param1, 0)) return 0;
+  if (isParamNotAble(param1, 0)) {
+    return 0;
+  }
 
-  if (typeof shapeType !== "string") return 0;
+  if (typeof shapeType !== "string") {
+    return 0;
+  }
   const shape = shapeType.toLowerCase();
 
   switch (shape) {
     case "cube":
       return 6 * param1 ** 2;
     case "cylinder":
-      if (isParamNotAble(param2, 0)) return 0;
+      if (isParamNotAble(param2, 0)) {
+        return 0;
+      }
       return 2 * Math.PI * param1 * (param1 + param2);
     default:
       return 0;
@@ -61,12 +66,14 @@ console.log(calculateSurfaceArea("sphere", 5));
 console.log(calculateSurfaceArea(123, 5));
 
 const calculatePaintBoxes = function (area, layersCount = 1) {
-  if (isParamNotAble(area, 0) || isParamNotAble(layersCount, 0)) return 0;
+  if (isParamNotAble(area, 0) || isParamNotAble(layersCount, 0)) {
+    return 0;
+  }
 
   const ONE_BOX_CAN_FILL = 10;
-  const FULL_AREA = area * layersCount;
+  const fullArea = area * layersCount;
 
-  return Math.ceil(FULL_AREA / ONE_BOX_CAN_FILL);
+  return Math.ceil(fullArea / ONE_BOX_CAN_FILL);
 };
 
 let cylinderArea = calculateSurfaceArea("cylinder", 3, 5);
