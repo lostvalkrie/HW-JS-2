@@ -76,8 +76,8 @@ const calculatePaintBoxes = function (area, layersCount = 1) {
   return Math.ceil(fullArea / ONE_BOX_CAN_FILL);
 };
 
-let cylinderArea = calculateSurfaceArea("cylinder", 3, 5);
-let cubeArea = calculateSurfaceArea("cube", 5);
+const cylinderArea = calculateSurfaceArea("cylinder", 3, 5);
+const cubeArea = calculateSurfaceArea("cube", 5);
 
 console.log(calculateSurfaceArea("cube", 5));
 console.log(calculateSurfaceArea("cylinder", 3, 5));
